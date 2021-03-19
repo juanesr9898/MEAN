@@ -1,0 +1,44 @@
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-lg-6 offset-lg-3">
+            <div class="card">
+                <div class="card-body text-center">
+                    <span class="titulo">CREAR PRODUCTO</span>
+                    <div class="mt-4">
+                        <form class='mt-4' [formGroup]='productoForms' (ngSubmit)="agregarProducto()">
+                            <div class="mb-3">
+                                <input type="text" formControlName='producto' class="form-control" placeholder="Producto">
+                                <div class="text-danger" *ngIf="productoForms.get('producto')?.hasError('required') && productoForms.get('producto')?.touched">
+                                    <span>El nombre del producto <strong>es obligatorio.</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" formControlName='categoria' class="form-control" placeholder="Categoría">
+                                <div class="text-danger" *ngIf="productoForms.get('categoria')?.hasError('required') && productoForms.get('categoria')?.touched">
+                                    <span>El nombre de la categoria <strong>es obligatoria.</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input type="text" formControlName='ubicacion' class="form-control" placeholder="Ubicación">
+                                <div class="text-danger" *ngIf="productoForms.get('ubicacion')?.hasError('required') && productoForms.get('ubicacion')?.touched">
+                                    <span>El nombre de la ubicacion <strong>es obligatorio.</strong></span>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <input min='50' type="number" formControlName='precio' class="form-control" placeholder="Precio">
+                                <div class="text-danger" *ngIf="productoForms.get('precio')?.hasError('required') && productoForms.get('precio')?.touched">
+                                    <span>El precio debe <strong>ser superior a $50 pesos.</strong></span>
+
+                                </div>
+                            </div>
+                            <div class=" mb-3 ">
+                                <button routerLink="/ " class="btn btn-secondary btn-lg float-start ">VOLVER</button>
+                                <button type="submit" [disabled]="productoForms.invalid" class="btn btn-success btn-lg float-end ">ACEPTAR</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
